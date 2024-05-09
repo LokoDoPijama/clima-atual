@@ -41,7 +41,26 @@ $dadosClimaticos = $o->getTempoAtual();
 
         #divIcone {
             min-width: 69px;
-            margin-left: -9%;
+            margin-left: -2%;
+        }
+
+        @media screen and (max-width: 1290px) {
+            #divDescricao {
+                margin-left: 2%;
+            }
+        }
+
+        @media screen and (max-width: 1220px) and (min-width: 1165px) {
+            #divDescricao {
+                margin-left: 6%;
+            }
+        }
+
+        @media screen and (max-width: 1164px) {
+            #colDescricao {
+                display: flex;
+                justify-content: center;
+            }
         }
 
         #imgIcone {
@@ -75,7 +94,7 @@ $dadosClimaticos = $o->getTempoAtual();
             <div class="col-3 offset-1 d-flex align-items-center">
                 <h1 id="h1Temperatura" class=""><?= round($dadosClimaticos->temperatura) ?>°C</h1>
             </div>
-            <div class="col-2">
+            <div id="colDescricao" class="col">
                 <div id="divDescricao" class="d-flex flex-column justify-content-center">
                     <div id="divIcone" class="h-75">
                         <img id="imgIcone" class="" src="https://openweathermap.org/img/wn/<?= $dadosClimaticos->icone ?>@2x.png">
@@ -115,6 +134,20 @@ $dadosClimaticos = $o->getTempoAtual();
                 <div class="pt-1 pb-1">
                     <span class="h5 d-block">Velocidade/Direção do Vento</span>
                     <span class="spanInfo h2"><?= $dadosClimaticos->velocidadeDoVento ?> km/h <i class="fa fa-location-arrow h4 align-middle" style="transform: rotate(<?= $dadosClimaticos->direcaoDoVento - 45 ?>deg)"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="row my-5 py-5">
+            <div class="divInfo col-3 offset-1 px-3" style="--bs-border-opacity: .5;">
+                <div class="pt-1 pb-1">
+                    <span class="h5 d-block">Nascer do Sol</span>
+                    <span class="spanInfo h2"><?= $dadosClimaticos->formatarNascerDoSol() ?> <i class="fa fa-sun h4 align-middle"></i></span>
+                </div>
+            </div>
+            <div class="divInfo col-3 px-3 border-start border-secondary" style="--bs-border-opacity: .5;">
+                <div class="pt-1 pb-1">
+                    <span class="h5 d-block">Pôr do Sol</span>
+                    <span class="spanInfo h2"><?= $dadosClimaticos->formatarPorDoSol() ?> <i class="fa fa-mountain-sun h4 align-middle"></i></span>
                 </div>
             </div>
         </div>
